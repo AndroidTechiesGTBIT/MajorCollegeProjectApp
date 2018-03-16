@@ -46,10 +46,9 @@
             >
             <!-- For Defining introduction -->
             <TextView
-                android:id="@+id/intro_head"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="IntroDuction"
+                android:text="@string/introduction"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"/>
@@ -57,30 +56,28 @@
                 android:id="@+id/intro_brief"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="IntroDuction"
+                android:text="@string/intro_one"
                 android:layout_marginTop="5dp"
                 />
             <!-- For Defining technology -->
             <TextView
-                android:id="@+id/tech_head"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Technology used"
-                android:textSize="25sp"
+                android:text="@string/technology_used"
+               android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"/>
             <TextView
                 android:id="@+id/tech_brief"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Python, Java, JavaScript, Android"
+                android:text="@string/techno_one"
                 android:layout_marginTop="5dp"
                 />
             <TextView
-                android:id="@+id/project_brief_head"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Project Brief"
+                android:text="@string/team_members"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"/>
@@ -88,7 +85,7 @@
                 android:id="@+id/project_brief"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Details to understand project"
+                android:text="@string/team_one"
                 android:layout_marginTop="5dp"
                 />
 

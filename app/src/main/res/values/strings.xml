@@ -3,4 +3,48 @@
     <string name="recent_news"> Gitall Festival</string>
     <string name="in_news">Hello My name is Sheshank and i am making this in order just to learn</string>
     <string name="publish_date">13/03/2018 10:28:22</string>
+
+    <!--detail description string-->
+    <string name="introduction">IntroDuction</string>
+    <string name="technology_used">Technology used</string>
+    <string name="team_members">Team Members</string>
+
+
+    <!-- these are project title strings -->
+    <string name="title_one">Hinton</string>
+    <string name="title_two">Analyst</string>
+
+
+    <!-- these are project technology strings -->
+    <string name="techno_one">Python,OpenCV,JavaScript,HTML,CSS,Pytorch,Dlib,Tensorflow,Keras,AWS GPU Compute EC2 Machine</string>
+    <string name="techno_two">html, php, css, javascript, jquery</string>
+
+
+    <!--these are project team members strings-->
+    <string name="team_one">Zaid Khan,Piyush Gandhi,Romit Dhamija,Ayushi Bansal</string>
+    <string name="team_two">Ayush Ghai, Aman Manocha, Sachpreet Kaur, Amarpreet Singh</string>
+
+
+    <!-- these are project introduction strings -->
+    <string name="intro_one">Hinton is a fake news generator (video) platform that aims to create
+awareness among the society about how fake new generation is
+possible and it aims to make people believe not to blindly follow
+what is seen on social media platforms like Facebook or Instagram.
+The main working of the project comes in form that we can alter
+facial expressions in a video live upto an extent that it is very
+difficult to distinguish between original and generated video.
+We use ResNet34 model trained to detect 68 points facial
+landmarks on the target video, pix2pix research paper for creating a
+GAN that has 2 neural networks I.e a discriminator and a generator
+both trained on Pytorch, Tensorflow and Keras separately for
+comparisons and then combined to make the final architecture of
+the pix2pix model</string>
+    <string name="intro_two">Analyst is action-packed with latest SEO updates and metric analysis to help you rise
+through the difficulties and hardship you generally face during your Search engine
+ranking process. It takes into account analyzing your website’s usability, mobile
+friendliness, technologies, social signals, visitor count and link metrics to evaluate the
+end score and grade your website. Further, you can even download the generated SEO
+report from your browser onto your mobile or desktop PC by just hitting the
+Download Report button for easy access or even share your score on various social
+media platforms.</string>
 </resources>
