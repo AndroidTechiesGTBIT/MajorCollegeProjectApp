@@ -1,4 +1,4 @@
-package com.example.tansu.detailpage;
+package com.example.androidtechies.majorproject;
 
 import org.junit.Test;
 
