@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="project_title">
+    <!--IT Data -->
+
+    <string-array name="project_title_it">
         <item>@string/title_one</item>
         <item>@string/title_two</item>
+        <item>@string/title_three</item>
+        <item>@string/title_four</item>
+
     </string-array>
 
-
-    <string-array name="project_introduction">
+    <string-array name="project_introduction_it">
         <item>@string/intro_one</item>
         <item>@string/intro_two</item>
+        <item>@string/intro_three</item>
+        <item>@string/intro_four</item>
     </string-array>
 
-
-    <string-array name="project_technology_used">
+    <string-array name="project_technology_used_it">
         <item>@string/techno_one</item>
         <item>@string/techno_two</item>
+        <item>@string/techno_three</item>
+        <item>@string/techno_four</item>
     </string-array>
 
 
-    <string-array name="project_team_members">
-        <item>@string/team_one</item>
-        <item>@string/team_two</item>
-    </string-array>
+
+
 
 </resources>

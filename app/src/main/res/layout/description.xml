@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.androidtechies.majorproject.MainActivity"
+    tools:context="com.example.androidtechies.majorproject.SplashScreen"
     android:orientation="vertical"
     android:background="#fcfcfc">
     <android.support.design.widget.AppBarLayout
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             app:layout_scrollFlags="exitUntilCollapsed|scroll"
             app:contentScrim="?attr/colorPrimary"
-            app:title="My App Welcome"
+            app:title="@string/intro_one"
             app:expandedTitleMarginStart="48dp"
             app:expandedTitleMarginEnd="48dp"
 
@@ -46,9 +46,11 @@
             >
             <!-- For Defining introduction -->
             <TextView
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/introduction"
+
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"/>
@@ -56,21 +58,26 @@
                 android:id="@+id/intro_brief"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:text="@string/intro_one"
+
                 android:layout_marginTop="5dp"
                 />
             <!-- For Defining technology -->
             <TextView
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/technology_used"
                android:textSize="25sp"
+
                 android:textStyle="bold"
                 android:textColor="@android:color/black"/>
             <TextView
                 android:id="@+id/tech_brief"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:text="@string/techno_one"
                 android:layout_marginTop="5dp"
                 />
@@ -78,6 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/team_members"
+
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"/>
@@ -85,7 +93,9 @@
                 android:id="@+id/project_brief"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:text="@string/team_one"
+
                 android:layout_marginTop="5dp"
                 />
 

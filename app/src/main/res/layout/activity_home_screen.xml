@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+
+    tools:context="com.example.androidtechies.majorproject.HomeScreen">
+
+    <Button
+        android:id="@+id/cseTag"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:background="@drawable/csef"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="200dp"
+        android:rotation="-45"
+        android:textSize="20sp"/>
+    <Button
+        android:id="@+id/eceTag"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/ecef"
+        android:rotation="-45"
+        android:textSize="20sp"/>
+    <Button
+        android:id="@+id/itTag"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:background="@drawable/itf"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="200dp"
+        android:rotation="-45"
+        android:textSize="20sp"/>
+    <Button
+        android:id="@+id/eeeTag"
+        android:layout_width="110dp"
+        android:background="@drawable/eeef"
+        android:layout_height="110dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="290dp"
+        android:rotation="-45"
+        android:textSize="20sp"/>
+
+
+</RelativeLayout>
+
+
+
+
