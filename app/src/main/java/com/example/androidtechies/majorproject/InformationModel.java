@@ -44,7 +44,7 @@ public class InformationModel implements Parcelable {
 
     @Override
     public int describeContents() {
-        return 0;
+        return hashCode();
     }
 
     @Override
@@ -60,7 +60,7 @@ public class InformationModel implements Parcelable {
         technologyUsed = in.readString();
     }
 
-    public static final Creator<InformationModel> CREATOR = new Creator<InformationModel>() {
+    public static final Parcelable.Creator<InformationModel> CREATOR = new Parcelable.Creator<InformationModel>() {
         @Override
         public InformationModel createFromParcel(Parcel in) {
             return new InformationModel(in);
@@ -68,7 +68,7 @@ public class InformationModel implements Parcelable {
 
         @Override
         public InformationModel[] newArray(int size) {
-            return new InformationModel[size];
+            return new InformationModel[0];
         }
     };
 

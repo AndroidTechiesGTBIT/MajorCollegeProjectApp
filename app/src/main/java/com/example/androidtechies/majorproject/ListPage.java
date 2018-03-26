@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -33,7 +34,6 @@ public class ListPage extends AppCompatActivity {
                 Intent intent = new Intent(ListPage.this, DescriptionActivity.class);
                 intent.putExtra("Information",informationModelArrayList.get(position));
                 startActivity(intent);
-
             }
         });
 
