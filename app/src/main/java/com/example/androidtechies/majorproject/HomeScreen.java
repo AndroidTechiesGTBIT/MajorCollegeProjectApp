@@ -6,12 +6,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.androidtechies.majorproject.RoomSample.AppDatabase;
+import com.example.androidtechies.majorproject.RoomSample.DatabaseInitializer;
+
 public class HomeScreen extends AppCompatActivity {
     public static final String HomeScreenTag = "HomeScreen";
     public static final Integer cseValue = 0;
     public static final Integer it = 0;
     public static final Integer ece = 0;
     public static final Integer eee = 0;
+    AppDatabase appDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +28,17 @@ public class HomeScreen extends AppCompatActivity {
         cse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent cseIntent = new Intent(HomeScreen.this, ListPage.class);
-                cseIntent.putExtra(HomeScreenTag, cseValue);
-                startActivity(cseIntent);
+//                Intent cseIntent = new Intent(HomeScreen.this, ListPage.class);
+//                cseIntent.putExtra(HomeScreenTag, cseValue);
+//                startActivity(cseIntent);
+                populateDatabase();
 
             }
         });
+        
+
+        
+        
 //        ece.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -55,5 +64,9 @@ public class HomeScreen extends AppCompatActivity {
 //            }
 //        });
     }
+
+    private void populateDatabase() {
+        DatabaseInitializer.populateAsync(AppDatabase.getAppDatabase(this));
     }
+}
 
