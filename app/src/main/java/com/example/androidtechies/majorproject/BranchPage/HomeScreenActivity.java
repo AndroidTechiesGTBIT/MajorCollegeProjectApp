@@ -6,8 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.androidtechies.majorproject.Data.Project;
 import com.example.androidtechies.majorproject.ListProjects.ListProjectActivity;
 import com.example.androidtechies.majorproject.R;
+import com.example.androidtechies.majorproject.Utils.InjectionClass;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,19 +31,40 @@ public class HomeScreenActivity extends AppCompatActivity implements View.OnClic
 
     HomePresenter presenter;
 
+    //Todo Check first installation of application & then only insert data
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
         ButterKnife.bind(this);
-        presenter = new HomePresenter(this);
+        presenter = new HomePresenter(this , InjectionClass.provideDataSource(this));
         //setting listeners on all buttons
         cseButton.setOnClickListener(this);
         itButton.setOnClickListener(this);
         eceButton.setOnClickListener(this);
         eeeButton.setOnClickListener(this);
+        createProjectArrayList();
+    }
 
+
+    //Todo replace team name with modules
+    private void createProjectArrayList() {
+        List<Project> arrayList = new ArrayList<>();
+        int lengthIt = getResources().getStringArray(R.array.project_titles_it).length;
+        Project model;
+        for(int i=0 ; i<lengthIt; i++) {
+            model = new Project(
+                    getResources().getString(R.string.it),
+                    getResources().getStringArray(R.array.project_titles_it)[i],
+                    getResources().getStringArray(R.array.project_introductions_it)[i],
+                    getResources().getStringArray(R.array.project_technology_used_it)[i],
+                    getResources().getStringArray(R.array.modules_of_project)[i]
+                    );
+            arrayList.add(model);
+        }
+        presenter.insertData(arrayList);
     }
 
 //    private void populateDatabase() {
@@ -58,15 +84,13 @@ public class HomeScreenActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    //Todo ask for any other way of handling multiple buttons openin same activity with some passing value
+
     @Override
     public void showNewActivity(String branchValue) {
         Intent intent = new Intent(this, ListProjectActivity.class);
         intent.putExtra(HomeScreenTag, branchValue);
         startActivity(intent);
     }
-
-
 
 }
 

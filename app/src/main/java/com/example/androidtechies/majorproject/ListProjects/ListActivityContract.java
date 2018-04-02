@@ -7,15 +7,16 @@ import java.util.List;
 public interface ListActivityContract {
     interface IListActivityView {
         void setRecyclerView();
-        void showToastIfNoDataAvailable();
+        void showToast(String textMsg);
         void createAdapterAndSetData(List<Project> projects);
-        void startDetailedActivity(int pos);
+        void startDetailedActivity(Project project);
     }
 
     interface IListActivityPresenter {
 
         List<Project> getBranchSpecificList(String branch);
-        void startDetailedActivity(int pos);
+        void startDetailedActivity(Project project);
+        void countProjects();
 
     }
 }

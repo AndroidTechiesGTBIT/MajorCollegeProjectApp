@@ -3,7 +3,7 @@
 
     <!--IT Data -->
 
-    <string-array name="project_title_it">
+    <string-array name="project_titles_it">
         <item>@string/title_one</item>
         <item>@string/title_two</item>
         <item>@string/title_three</item>
@@ -11,7 +11,7 @@
 
     </string-array>
 
-    <string-array name="project_introduction_it">
+    <string-array name="project_introductions_it">
         <item>@string/intro_one</item>
         <item>@string/intro_two</item>
         <item>@string/intro_three</item>
@@ -25,7 +25,12 @@
         <item>@string/techno_four</item>
     </string-array>
 
-
+    <string-array name="modules_of_project">
+        <item>@string/team_one</item>
+        <item>@string/team_two</item>
+        <item>@string/team_three</item>
+        <item>@string/team_four</item>
+    </string-array>
 
 
 

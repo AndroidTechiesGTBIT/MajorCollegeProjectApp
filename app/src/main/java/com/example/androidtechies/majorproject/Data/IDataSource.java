@@ -13,5 +13,11 @@ public interface IDataSource {
 
     void getBranchProjects(@NonNull String branch, @NonNull LoadDataCallBack callBack);
 
-    void saveProject(@NonNull Project project);
+    void saveProject(@NonNull List<Project> projects);
+
+    void getCountProjects(@NonNull CountProjectsCallback countProjects);
+
+    interface CountProjectsCallback {
+        void onCountReturned(int countValue);
+    }
 }

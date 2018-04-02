@@ -15,7 +15,7 @@ public interface ProjectDao {
     int countProjects();
 
     @Insert
-    void insertAll(Project... users);
+    void insertAll(List<Project> projects);
 
     @Delete
     void delete(Project user);

@@ -2,11 +2,16 @@ package com.example.androidtechies.majorproject.Data;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
+import com.example.androidtechies.majorproject.InformationModel;
+
 @Entity(tableName = "project_table")
-public class Project {
+public class Project implements Parcelable {
 
     @NonNull
     @PrimaryKey(autoGenerate = true)
@@ -26,6 +31,15 @@ public class Project {
 
     @ColumnInfo(name = "modules_used")
     private String modulesOfProject;
+
+
+    public Project(String projectBranch, String titleOfProject, String introOfProject, String technologyUsed, String modulesOfProject) {
+        this.projectBranch = projectBranch;
+        this.titleOfProject = titleOfProject;
+        this.introOfProject = introOfProject;
+        this.technologyUsed = technologyUsed;
+        this.modulesOfProject = modulesOfProject;
+    }
 
     /*
     Getters and Setters
@@ -78,4 +92,40 @@ public class Project {
     public void setModulesOfProject(String modulesOfProject) {
         this.modulesOfProject = modulesOfProject;
     }
+
+    /*
+        parcellable functions
+     */
+
+    @Override
+    public int describeContents() {
+        return hashCode();
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int flags) {
+        parcel.writeString(titleOfProject);
+        parcel.writeString(introOfProject);
+        parcel.writeString(technologyUsed);
+        parcel.writeString(modulesOfProject);
+    }
+
+    protected Project(Parcel in) {
+        titleOfProject = in.readString();
+        introOfProject = in.readString();
+        technologyUsed = in.readString();
+        modulesOfProject = in.readString();
+    }
+
+    public static final Parcelable.Creator<Project> CREATOR = new Parcelable.Creator<Project>() {
+        @Override
+        public Project createFromParcel(Parcel in) {
+            return new Project(in);
+        }
+
+        @Override
+        public Project[] newArray(int size) {
+            return new Project[0];
+        }
+    };
 }

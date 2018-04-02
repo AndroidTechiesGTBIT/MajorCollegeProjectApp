@@ -39,28 +39,12 @@ public class ListProjectActivity extends AppCompatActivity implements IListActiv
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         listPresenter = new ListActivityPresenter(this, InjectionClass.provideDataSource(this));
+        listPresenter.countProjects();
+
+
         listPresenter.getBranchSpecificList(branch);
-
-
-
-
-
     }
 
-//    private ArrayList<InformationModel> createFakeData(int value) {
-//        ArrayList<InformationModel> arrayList = new ArrayList<>();
-//        int length = getResources().getStringArray(R.array.project_title_it).length;
-//        InformationModel model;
-//        for(int i=0 ; i<length; i++) {
-//            model = new InformationModel(
-//                    getResources().getStringArray(R.array.project_title_it)[i],
-//                    getResources().getStringArray(R.array.project_introduction_it)[i],
-//                    getResources().getStringArray(R.array.project_technology_used_it)[i]
-//                    );
-//            arrayList.add(model);
-//        }
-//        return arrayList;
-//    }
 
     @Override
     public void setRecyclerView() {
@@ -71,25 +55,29 @@ public class ListProjectActivity extends AppCompatActivity implements IListActiv
     }
 
     @Override
-    public void showToastIfNoDataAvailable() {
-        Toast.makeText(this,"No Data Available", Toast.LENGTH_SHORT).show();
+    public void showToast(String text) {
+        Toast.makeText(this,text, Toast.LENGTH_SHORT).show();
     }
 
+
+
     @Override
-    public void createAdapterAndSetData(List<Project> projects) {
-        listAdapter = new ListAdapter(informationModelArrayList, this, new ListAdapter.ClickListener() {
+    public void createAdapterAndSetData(final List<Project> projects) {
+        listAdapter = new ListAdapter(projects, this, new ListAdapter.ClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                listPresenter.startDetailedActivity(position);
+                listPresenter.startDetailedActivity(projects.get(position));
+                Toast.makeText(ListProjectActivity.this,"click on "+(position+1)+ "th row", Toast.LENGTH_SHORT).show();
             }
         });
         recyclerView.setAdapter(listAdapter);
     }
 
+
     @Override
-    public void startDetailedActivity(int pos) {
+    public void startDetailedActivity(Project project) {
         Intent intent = new Intent(ListProjectActivity.this, DescriptionActivity.class);
-        intent.putExtra("Information",informationModelArrayList.get(pos));
+        intent.putExtra("Information",project);
         startActivity(intent);
     }
 }

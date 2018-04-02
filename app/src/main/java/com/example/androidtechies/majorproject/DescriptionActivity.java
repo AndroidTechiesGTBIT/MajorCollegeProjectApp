@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.example.androidtechies.majorproject.Data.Project;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -26,13 +28,14 @@ public class DescriptionActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-        InformationModel model = intent.getParcelableExtra("Information");
-        String title = model.getTitleOfProject();
-        String intro = model.getIntroProject();
-        String tech = model.getTechnologyUsed();
-        Log.d("Information", title+ " 2 "+intro+ " 3 "+tech);
-        introDescription.setText(intro);
-        techDescription.setText(tech);
-        cToolBar.setTitle(title);
+        Project detail = intent.getParcelableExtra("Information");
+        String title = detail.getTitleOfProject();
+        String intro = detail.getIntroOfProject();
+        String tech = detail.getTechnologyUsed();
+        String module = detail.getModulesOfProject();
+        Log.d("Information", "1 "+title+ "\n2 "+intro+ "\n3 "+tech+ "\n4 "+module);
+//        introDescription.setText(intro);
+//        techDescription.setText(tech);
+//        cToolBar.setTitle(title);
     }
 }

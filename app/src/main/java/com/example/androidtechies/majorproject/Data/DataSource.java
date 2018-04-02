@@ -68,14 +68,31 @@ public class DataSource implements IDataSource {
     }
 
     @Override
-    public void saveProject(@NonNull final Project project) {
+    public void saveProject(@NonNull final List<Project> projects) {
         Runnable saveRunnable = new Runnable() {
             @Override
             public void run() {
-                projectDao.insertAll(project);
+                projectDao.insertAll(projects);
             }
         };
         appExecutors.diskIO().execute(saveRunnable);
+    }
+
+    @Override
+    public void getCountProjects(@NonNull final CountProjectsCallback callback) {
+        Runnable countRunnable = new Runnable() {
+            @Override
+            public void run() {
+                final int count = projectDao.countProjects();
+                appExecutors.mainThread().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        callback.onCountReturned(count);
+                    }
+                });
+            }
+        };
+        appExecutors.diskIO().execute(countRunnable);
     }
 //
 //    private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {

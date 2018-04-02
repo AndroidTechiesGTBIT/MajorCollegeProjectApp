@@ -18,6 +18,7 @@ public class ListActivityPresenter implements ListActivityContract.IListActivity
     public ListActivityPresenter(@NonNull ListActivityContract.IListActivityView view,@NonNull DataSource dataSource) {
         this.view = view;
         this.dataSource = dataSource;
+
         view.setRecyclerView();
     }
 
@@ -32,14 +33,30 @@ public class ListActivityPresenter implements ListActivityContract.IListActivity
 
             @Override
             public void onDataNotAvailable() {
-                view.showToastIfNoDataAvailable();
+                view.showToast("Data not available");
             }
         });
         return null;
     }
 
     @Override
-    public void startDetailedActivity(int pos) {
-        view.startDetailedActivity(pos);
+    public void startDetailedActivity(Project project) {
+        view.startDetailedActivity(project);
+    }
+
+    @Override
+    public void countProjects() {
+        dataSource.getCountProjects(new IDataSource.CountProjectsCallback() {
+            @Override
+            public void onCountReturned(int countValue) {
+                Log.d("myTag", "count value is "+countValue);
+                if (countValue<=0) {
+                    view.showToast("data not inserted properly");
+                }
+                else {
+                    view.showToast("successful data insertion "+ countValue);
+                }
+            }
+        });
     }
 }
