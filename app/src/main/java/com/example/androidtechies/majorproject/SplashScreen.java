@@ -8,6 +8,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.*;
 
+import com.example.androidtechies.majorproject.BranchPage.HomeScreenActivity;
+
 public class SplashScreen extends AppCompatActivity {
 private TextView textView;
 private ImageView imageView;
@@ -21,7 +23,7 @@ private ImageView imageView;
         Animation myanim = AnimationUtils.loadAnimation(this,R.anim.mytransition);
         textView.startAnimation(myanim);
         imageView.startAnimation(myanim);
-        final Intent branch = new Intent(this,HomeScreen.class);
+        final Intent branch = new Intent(this,HomeScreenActivity.class);
         Thread timer = new Thread(){
             public void run(){
                 try {

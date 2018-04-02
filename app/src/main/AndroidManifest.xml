@@ -16,8 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListPage" />
-        <activity android:name=".HomeScreen" />
+        <activity android:name=".ListProjects.ListPage" />
+        <activity android:name=".BranchPage.HomeScreenActivity" />
         <activity android:name=".DescriptionActivity"></activity>
     </application>
 

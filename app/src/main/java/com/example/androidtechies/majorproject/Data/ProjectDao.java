@@ -1,4 +1,4 @@
-package com.example.androidtechies.majorproject.RoomSample;
+package com.example.androidtechies.majorproject.Data;
 
 
 import android.arch.persistence.room.Dao;
@@ -23,5 +23,9 @@ public interface ProjectDao {
 
     @Delete
     void delete(Project user);
+
+    @Query("SELECT * FROM project_table where branch = :branchName ")
+    List<Project> getBranchAllData(String branchName);
+
 
 }

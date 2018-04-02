@@ -1,12 +1,14 @@
-package com.example.androidtechies.majorproject.RoomSample;
+package com.example.androidtechies.majorproject.Data;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 @Entity(tableName = "project_table")
 public class Project {
 
+    @NonNull
     @PrimaryKey(autoGenerate = true)
     private int id;
 
@@ -22,8 +24,12 @@ public class Project {
     @ColumnInfo(name = "technology_used")
     private String technologyUsed;
 
-    @ColumnInfo(name = "modules")
+    @ColumnInfo(name = "modules_used")
     private String modulesOfProject;
+
+    /*
+    Getters and Setters
+     */
 
     public int getId() {
         return id;

@@ -6,7 +6,7 @@
     android:id="@+id/recyclerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.androidtechies.majorproject.ListPage">
+    tools:context="com.example.androidtechies.majorproject.ListProjects.ListPage">
 
 </android.support.v7.widget.RecyclerView>
 

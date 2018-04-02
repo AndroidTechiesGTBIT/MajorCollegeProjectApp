@@ -1,6 +1,5 @@
-package com.example.androidtechies.majorproject.RoomSample;
+package com.example.androidtechies.majorproject.Data;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -8,12 +7,15 @@ import android.util.Log;
 import java.util.List;
 
 public class DatabaseInitializer {
+    //tag by class name
     private static final String TAG = DatabaseInitializer.class.getName();
 
 
+    //creates & executes populate async-task
     public static void populateAsync(@NonNull final AppDatabase db) {
         PopulateDbAsync task = new PopulateDbAsync(db);
         task.execute();
+
     }
 
     public static void populateSync(@NonNull final AppDatabase db) {
@@ -57,5 +59,28 @@ public class DatabaseInitializer {
             return null;
         }
 
+    }
+
+    private static class GetProjectsAsync extends AsyncTask<String, Void, List<Project>> {
+
+        private final AppDatabase database;
+
+        public GetProjectsAsync(AppDatabase database) {
+            this.database = database;
+        }
+
+        @Override
+        protected List<Project> doInBackground(String... strings) {
+            String branchName = strings[0];
+            List<Project> projects = database.projectDao().getBranchAllData(branchName);
+
+            return projects;
+        }
+
+        @Override
+        protected void onPostExecute(List<Project> projects) {
+            super.onPostExecute(projects);
+
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.androidtechies.majorproject.RoomSample;
+package com.example.androidtechies.majorproject.Data;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
@@ -13,17 +13,20 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract ProjectDao projectDao();
 
+    private static final Object sLock = new Object();
+
 
     public static AppDatabase getAppDatabase(Context context) {
-        if (INSTANCE == null) {
-            INSTANCE =
-                    Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "user-database")
-                            // allow queries on the main thread.
-                            // Not suggested to do on real application!
-                            .allowMainThreadQueries()
-                            .build();
+        synchronized (sLock) {
+            if (INSTANCE == null) {
+                INSTANCE =
+                        Room.databaseBuilder(context.getApplicationContext(),
+                                AppDatabase.class, "user-database")
+                                .build();
+            }
+            return INSTANCE;
         }
-        return INSTANCE;
+
     }
 
     public static void destroyInstance() {

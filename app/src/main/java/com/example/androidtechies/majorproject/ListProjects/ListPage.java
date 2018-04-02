@@ -1,4 +1,4 @@
-package com.example.androidtechies.majorproject;
+package com.example.androidtechies.majorproject.ListProjects;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,8 +6,12 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
+
+import com.example.androidtechies.majorproject.BranchPage.HomeScreenActivity;
+import com.example.androidtechies.majorproject.DescriptionActivity;
+import com.example.androidtechies.majorproject.InformationModel;
+import com.example.androidtechies.majorproject.R;
 
 import java.util.ArrayList;
 
@@ -19,8 +23,10 @@ public class ListPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_page);
+
+
         Intent intent = getIntent();
-        Integer value = intent.getIntExtra(HomeScreen.HomeScreenTag,0);
+        Integer value = intent.getIntExtra(HomeScreenActivity.HomeScreenTag,0);
         informationModelArrayList = new ArrayList<>();
         informationModelArrayList = createFakeData(value);
 

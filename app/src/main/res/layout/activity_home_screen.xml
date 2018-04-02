@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
 
-    tools:context="com.example.androidtechies.majorproject.HomeScreen">
+    tools:context="com.example.androidtechies.majorproject.BranchPage.HomeScreenActivity">
 
     <Button
         android:id="@+id/cseTag"
