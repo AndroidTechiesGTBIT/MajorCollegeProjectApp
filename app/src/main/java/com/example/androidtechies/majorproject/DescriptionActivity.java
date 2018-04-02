@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.example.androidtechies.majorproject.Data.Project;
+import com.example.androidtechies.majorproject.Data.db.Project;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

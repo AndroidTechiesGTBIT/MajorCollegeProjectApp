@@ -3,10 +3,12 @@ package com.example.androidtechies.majorproject.BranchPage;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.androidtechies.majorproject.Data.Project;
+import com.example.androidtechies.majorproject.Data.DataSource;
+import com.example.androidtechies.majorproject.Data.db.Project;
 import com.example.androidtechies.majorproject.ListProjects.ListProjectActivity;
 import com.example.androidtechies.majorproject.R;
 import com.example.androidtechies.majorproject.Utils.InjectionClass;
@@ -31,26 +33,33 @@ public class HomeScreenActivity extends AppCompatActivity implements View.OnClic
 
     HomePresenter presenter;
 
-    //Todo Check first installation of application & then only insert data
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
         ButterKnife.bind(this);
-        presenter = new HomePresenter(this , InjectionClass.provideDataSource(this));
+        DataSource source = InjectionClass.provideDataSource(this);
+        presenter = new HomePresenter(this , source);
+
+        //checking first time app starting
+        if(source.checkFirstTime()) {
+            source.setFirstTime(false);
+            Log.d(HomeScreenTag, "first time run");
+            //populating sqlite database
+            populateDatabase();
+        }
+
         //setting listeners on all buttons
         cseButton.setOnClickListener(this);
         itButton.setOnClickListener(this);
         eceButton.setOnClickListener(this);
         eeeButton.setOnClickListener(this);
-        createProjectArrayList();
     }
 
 
     //Todo replace team name with modules
-    private void createProjectArrayList() {
+    private void populateDatabase() {
         List<Project> arrayList = new ArrayList<>();
         int lengthIt = getResources().getStringArray(R.array.project_titles_it).length;
         Project model;

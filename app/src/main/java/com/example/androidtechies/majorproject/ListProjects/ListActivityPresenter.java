@@ -2,11 +2,10 @@ package com.example.androidtechies.majorproject.ListProjects;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.androidtechies.majorproject.Data.DataSource;
 import com.example.androidtechies.majorproject.Data.IDataSource;
-import com.example.androidtechies.majorproject.Data.Project;
+import com.example.androidtechies.majorproject.Data.db.Project;
 
 import java.util.List;
 

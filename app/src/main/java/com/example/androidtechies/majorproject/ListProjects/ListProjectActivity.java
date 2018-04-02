@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.androidtechies.majorproject.BranchPage.HomeScreenActivity;
-import com.example.androidtechies.majorproject.Data.Project;
+import com.example.androidtechies.majorproject.Data.db.Project;
 import com.example.androidtechies.majorproject.DescriptionActivity;
 import com.example.androidtechies.majorproject.InformationModel;
 import com.example.androidtechies.majorproject.R;
@@ -39,9 +39,6 @@ public class ListProjectActivity extends AppCompatActivity implements IListActiv
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         listPresenter = new ListActivityPresenter(this, InjectionClass.provideDataSource(this));
-        listPresenter.countProjects();
-
-
         listPresenter.getBranchSpecificList(branch);
     }
 

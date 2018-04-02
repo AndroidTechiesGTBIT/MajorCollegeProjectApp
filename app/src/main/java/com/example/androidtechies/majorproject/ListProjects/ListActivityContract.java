@@ -1,6 +1,6 @@
 package com.example.androidtechies.majorproject.ListProjects;
 
-import com.example.androidtechies.majorproject.Data.Project;
+import com.example.androidtechies.majorproject.Data.db.Project;
 
 import java.util.List;
 

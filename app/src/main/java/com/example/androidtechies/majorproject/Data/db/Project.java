@@ -1,14 +1,11 @@
-package com.example.androidtechies.majorproject.Data;
+package com.example.androidtechies.majorproject.Data.db;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
-
-import com.example.androidtechies.majorproject.InformationModel;
 
 @Entity(tableName = "project_table")
 public class Project implements Parcelable {

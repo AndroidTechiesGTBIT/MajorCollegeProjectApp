@@ -1,10 +1,12 @@
 package com.example.androidtechies.majorproject.Data;
 
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
 
+import com.example.androidtechies.majorproject.Data.db.Project;
+import com.example.androidtechies.majorproject.Data.db.ProjectDao;
+import com.example.androidtechies.majorproject.Data.pref.IPrefHelper;
 import com.example.androidtechies.majorproject.Utils.AppExecutors;
 
 import java.util.List;
@@ -19,21 +21,23 @@ public class DataSource implements IDataSource {
     private ProjectDao projectDao;
 
     private AppExecutors appExecutors;
+    private IPrefHelper prefHelper;
 
     // Prevent direct instantiation.
     private DataSource(@NonNull AppExecutors appExecutors,
-                       @NonNull ProjectDao projectDao) {
+                       @NonNull ProjectDao projectDao, IPrefHelper prefHelper) {
         this.appExecutors = appExecutors;
         this.projectDao = projectDao;
+        this.prefHelper = prefHelper;
     }
 
 
     public static DataSource getInstance(@NonNull AppExecutors appExecutors,
-                                         @NonNull ProjectDao dao) {
+                                         @NonNull ProjectDao dao, @NonNull IPrefHelper prefHelper) {
         if (INSTANCE == null) {
             synchronized (DataSource.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = new DataSource(appExecutors, dao);
+                    INSTANCE = new DataSource(appExecutors, dao, prefHelper);
                 }
             }
         }
@@ -94,70 +98,25 @@ public class DataSource implements IDataSource {
         };
         appExecutors.diskIO().execute(countRunnable);
     }
-//
-//    private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
-//
-//        private final AppDatabase mDb;
-//
-//        PopulateDbAsync(AppDatabase db) {
-//            mDb = db;
-//        }
-//
-//        @Override
-//        protected Void doInBackground(final Void... params) {
-//            populateWithTestData(mDb);
-//            return null;
-//        }
-//
-//    }
-//
-//    private static class GetProjectsAsync extends AsyncTask<String, Void, List<Project>> {
-//
-//        private final AppDatabase database;
-//
-//        public GetProjectsAsync(AppDatabase database) {
-//            this.database = database;
-//        }
-//
-//        @Override
-//        protected List<Project> doInBackground(String... strings) {
-//            String branchName = strings[0];
-//            List<Project> projects = database.projectDao().getBranchAllData(branchName);
-//
-//            return projects;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(List<Project> projects) {
-//            super.onPostExecute(projects);
-//
-//        }
-//    }
-    //creates & executes populate async-task
-//    public static void populateAsync(@NonNull final AppDatabase db) {
-//        PopulateDbAsync task = new PopulateDbAsync(db);
-//        task.execute();
-//
-//    }
-//
-//    private static Project addProject (final AppDatabase db, Project project) {
-//        db.projectDao().insertAll(project);
-//        return project;
-//    }
 
-//    private static void populateWithTestData(AppDatabase db) {
-//
-//        Project project = new Project();
-//        project.setTitleOfProject("Hinton");
-//        project.setIntroOfProject("Hinton is a fake news generator (video) platform that aims to create\n" +
-//                "    awareness among the society ");
-//        project.setModulesOfProject("news");
-//        project.setProjectBranch("IT");
-//        project.setTechnologyUsed("Machine learning");
-//        addProject(db, project);
-//
-//
-//        int count = db.projectDao().countProjects();
-//    }
+    @Override
+    public void nukeTable() {
+        Runnable deleteTableData = new Runnable() {
+            @Override
+            public void run() {
+                projectDao.nukeTable();
+            }
+        };
+        appExecutors.diskIO().execute(deleteTableData);
+    }
 
+    @Override
+    public boolean checkFirstTime() {
+        return prefHelper.checkFirstTime();
+    }
+
+    @Override
+    public void setFirstTime(boolean value) {
+        prefHelper.setFirstTime(value);
+    }
 }

@@ -7,11 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.androidtechies.majorproject.Data.Project;
-import com.example.androidtechies.majorproject.InformationModel;
+import com.example.androidtechies.majorproject.Data.db.Project;
 import com.example.androidtechies.majorproject.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -1,7 +1,7 @@
 package com.example.androidtechies.majorproject.BranchPage;
 
 import com.example.androidtechies.majorproject.Data.DataSource;
-import com.example.androidtechies.majorproject.Data.Project;
+import com.example.androidtechies.majorproject.Data.db.Project;
 
 import java.util.List;
 
@@ -24,5 +24,10 @@ public class HomePresenter implements HomeContract.IHomePresenter{
     @Override
     public void insertData(List<Project> projects) {
         dataSource.saveProject(projects);
+    }
+
+    @Override
+    public void deleteAllData() {
+        dataSource.nukeTable();
     }
 }
