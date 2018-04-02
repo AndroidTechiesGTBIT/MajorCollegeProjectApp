@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.androidtechies.majorproject.ListProjects.ListPage;
+import com.example.androidtechies.majorproject.ListProjects.ListProjectActivity;
 import com.example.androidtechies.majorproject.R;
 
 import butterknife.BindView;
@@ -42,14 +42,16 @@ public class HomeScreenActivity extends AppCompatActivity implements View.OnClic
     }
 
 //    private void populateDatabase() {
-//        DatabaseInitializer.populateAsync(AppDatabase.getAppDatabase(this));
+//        DataSource.populateAsync(AppDatabase.getAppDatabase(this));
 //    }
+
+    //Todo add more button  clicks when data is available
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.cseTag : break;
-            case R.id.itTag :  presenter.openNewActivity(1);
+            case R.id.itTag :  presenter.openNewActivity(getString(R.string.it));
                                break;
             case R.id.eceTag : break;
             case R.id.eeeTag : break;
@@ -58,11 +60,13 @@ public class HomeScreenActivity extends AppCompatActivity implements View.OnClic
 
     //Todo ask for any other way of handling multiple buttons openin same activity with some passing value
     @Override
-    public void showNewActivity(int branchValue) {
-        Intent intent = new Intent(this, ListPage.class);
+    public void showNewActivity(String branchValue) {
+        Intent intent = new Intent(this, ListProjectActivity.class);
         intent.putExtra(HomeScreenTag, branchValue);
         startActivity(intent);
     }
+
+
 
 }
 

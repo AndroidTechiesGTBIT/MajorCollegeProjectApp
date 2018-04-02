@@ -1,7 +1,5 @@
 package com.example.androidtechies.majorproject.BranchPage;
 
-import com.example.androidtechies.majorproject.Data.DatabaseInitializer;
-
 public class HomePresenter implements HomeContract.IHomePresenter{
 
     private HomeContract.IHomeView view;
@@ -11,7 +9,7 @@ public class HomePresenter implements HomeContract.IHomePresenter{
     }
 
     @Override
-    public void openNewActivity(int branchValue) {
+    public void openNewActivity(String branchValue) {
         view.showNewActivity(branchValue);
 
     }

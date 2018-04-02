@@ -4,10 +4,10 @@ package com.example.androidtechies.majorproject.BranchPage;
 public interface HomeContract {
 
     interface IHomePresenter {
-        void openNewActivity(int i);
+        void openNewActivity(String branch);
     }
 
     interface IHomeView {
-        void showNewActivity(int i);
+        void showNewActivity(String branch);
     }
 }

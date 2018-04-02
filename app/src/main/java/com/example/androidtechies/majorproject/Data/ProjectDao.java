@@ -11,10 +11,6 @@ import java.util.List;
 @Dao
 public interface ProjectDao {
 
-    @Query("SELECT * FROM project_table")
-    List<Project> getAll();
-
-
     @Query("SELECT COUNT(*) from project_table")
     int countProjects();
 

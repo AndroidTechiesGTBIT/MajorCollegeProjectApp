@@ -1,6 +1,11 @@
 <resources>
-    <string name="app_name">DetailPage</string>
+    <string name="app_name">CollegeProject</string>
 
+    <!--Branch names-->
+    <string name="cse">CSE</string>
+    <string name="it">IT</string>
+    <string name="ece">ECE</string>
+    <string name="eee">EEE</string>
 
     <!--detail description string-->
     <string name="introduction">IntroDuction</string>
