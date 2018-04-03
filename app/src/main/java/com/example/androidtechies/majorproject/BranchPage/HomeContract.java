@@ -1,7 +1,7 @@
 package com.example.androidtechies.majorproject.BranchPage;
 
 
-import com.example.androidtechies.majorproject.Data.db.Project;
+import com.example.androidtechies.majorproject.Data.ProjectModel;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ public interface HomeContract {
 
     interface IHomePresenter {
         void openNewActivity(String branch);
-        void insertData(List<Project> projects);
+        void insertData(List<ProjectModel> projects);
         void deleteAllData();
     }
 

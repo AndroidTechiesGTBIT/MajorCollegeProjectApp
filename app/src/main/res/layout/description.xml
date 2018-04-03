@@ -4,35 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.androidtechies.majorproject.SplashScreen"
+    android:background="#fcfcfc"
     android:orientation="vertical"
-    android:background="#fcfcfc">
+    tools:context="com.example.androidtechies.majorproject.SplashScreen">
+
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsingtoolbar"
-            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            app:layout_scrollFlags="exitUntilCollapsed|scroll"
+            android:layout_height="match_parent"
+            android:background="@drawable/testimage"
             app:contentScrim="?attr/colorPrimary"
-            app:title="@string/intro_one"
-            app:expandedTitleMarginStart="48dp"
             app:expandedTitleMarginEnd="48dp"
+            app:expandedTitleMarginStart="48dp"
 
-            android:background="@drawable/testimage">
+            app:layout_scrollFlags="exitUntilCollapsed|scroll">
+
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbarid"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:layout_collapseMode="pin"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize" />
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -42,8 +45,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
             <!-- For Defining introduction -->
             <TextView
 
@@ -51,53 +53,47 @@
                 android:layout_height="wrap_content"
                 android:text="@string/introduction"
 
+                android:textColor="@android:color/black"
                 android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"/>
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/intro_brief"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:text="@string/intro_one"
-
-                android:layout_marginTop="5dp"
-                />
+                android:layout_marginTop="5dp" />
             <!-- For Defining technology -->
             <TextView
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/technology_used"
-               android:textSize="25sp"
+                android:textColor="@android:color/black"
 
-                android:textStyle="bold"
-                android:textColor="@android:color/black"/>
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/tech_brief"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:text="@string/techno_one"
                 android:layout_marginTop="5dp"
-                />
+                android:text="@string/techno_one" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/team_members"
-
+                android:text="@string/modules_used"
+                android:textColor="@android:color/black"
                 android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"/>
+                android:textStyle="bold" />
+
             <TextView
-                android:id="@+id/project_brief"
+                android:id="@+id/modules_used"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:text="@string/team_one"
-
-                android:layout_marginTop="5dp"
-                />
+                android:layout_marginTop="5dp" />
 
         </LinearLayout>
 

@@ -10,7 +10,7 @@
     <!--detail description string-->
     <string name="introduction">IntroDuction</string>
     <string name="technology_used">Technology used</string>
-    <string name="team_members">Team Members</string>
+    <string name="modules_used">Modules</string>
 
 
     <!-- these are project title strings -->

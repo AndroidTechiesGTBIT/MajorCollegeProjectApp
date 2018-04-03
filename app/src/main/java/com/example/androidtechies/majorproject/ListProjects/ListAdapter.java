@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.androidtechies.majorproject.Data.db.Project;
+import com.example.androidtechies.majorproject.Data.ProjectModel;
 import com.example.androidtechies.majorproject.R;
 
 import java.util.List;
@@ -18,12 +18,12 @@ import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> {
 
-    List<Project> informationList;
+    List<ProjectModel> informationList;
     Context context;
     ClickListener listener;
 
 
-    public ListAdapter(List<Project> informationList , Context context, ClickListener listener) {
+    public ListAdapter(List<ProjectModel> informationList , Context context, ClickListener listener) {
         this.informationList = informationList;
         this.context = context;
         this.listener = listener;

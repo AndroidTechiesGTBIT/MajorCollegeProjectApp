@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.example.androidtechies.majorproject.Data.db.Project;
+import com.example.androidtechies.majorproject.Data.ProjectModel;
+import com.example.androidtechies.majorproject.Utils.LogAndToastUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,6 +19,8 @@ public class DescriptionActivity extends AppCompatActivity {
     TextView introDescription;
     @BindView(R.id.tech_brief)
     TextView techDescription;
+    @BindView(R.id.modules_used)
+    TextView modulesUsed;
     @BindView(R.id.collapsingtoolbar)
     CollapsingToolbarLayout cToolBar;
 
@@ -28,12 +31,17 @@ public class DescriptionActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-        Project detail = intent.getParcelableExtra("Information");
+        ProjectModel detail = intent.getParcelableExtra("Information");
         String title = detail.getTitleOfProject();
         String intro = detail.getIntroOfProject();
         String tech = detail.getTechnologyUsed();
         String module = detail.getModulesOfProject();
-        Log.d("Information", "1 "+title+ "\n2 "+intro+ "\n3 "+tech+ "\n4 "+module);
+
+        LogAndToastUtil.Logging("1 " + title + "\n2 " + intro + "\n3 " + tech + "\n4 " + module);
+        cToolBar.setTitle(title);
+        introDescription.setText(intro);
+        techDescription.setText(tech);
+        modulesUsed.setText(module);
 //        introDescription.setText(intro);
 //        techDescription.setText(tech);
 //        cToolBar.setTitle(title);

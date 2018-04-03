@@ -1,61 +1,64 @@
 package com.example.androidtechies.majorproject.ListProjects;
 
+import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.example.androidtechies.majorproject.Data.DataSource;
-import com.example.androidtechies.majorproject.Data.IDataSource;
-import com.example.androidtechies.majorproject.Data.db.Project;
+import com.example.androidtechies.majorproject.Data.DataManager;
+import com.example.androidtechies.majorproject.Data.ProjectModel;
+import com.example.androidtechies.majorproject.Data.db.ProjectContract;
+import com.example.androidtechies.majorproject.Utils.LogAndToastUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListActivityPresenter implements ListActivityContract.IListActivityPresenter {
 
     private final ListActivityContract.IListActivityView view;
-    private DataSource dataSource;
+    private DataManager manager;
 
-    public ListActivityPresenter(@NonNull ListActivityContract.IListActivityView view,@NonNull DataSource dataSource) {
+    public ListActivityPresenter(@NonNull ListActivityContract.IListActivityView view,@NonNull DataManager dataSource) {
         this.view = view;
-        this.dataSource = dataSource;
+        this.manager = dataSource;
 
         view.setRecyclerView();
     }
 
     @Override
-    public List<Project> getBranchSpecificList(String branch) {
+    public void getBranchSpecificList(String branch) {
 
-        dataSource.getBranchProjects(branch, new IDataSource.LoadDataCallBack() {
-            @Override
-            public void onBranchDataLoaded(List<Project> projects) {
-                view.createAdapterAndSetData(projects);
+        Cursor cursor = manager.getBranchProjects(branch);
+        List<ProjectModel> list = new ArrayList<>();
+        ProjectModel model;
+        if(cursor!=null) {
+            try {
+                while (cursor.moveToNext()) {
+                    model = new ProjectModel(
+                      branch, cursor.getString(cursor.getColumnIndex(ProjectContract.ProjectEntry.COLUMN_PROJECT_TITLE)),
+                            cursor.getString(cursor.getColumnIndex(ProjectContract.ProjectEntry.COLUMN_PROJECT_INTRO)),
+                            cursor.getString(cursor.getColumnIndex(ProjectContract.ProjectEntry.COLUMN_TECH_USED)),
+                            cursor.getString(cursor.getColumnIndex(ProjectContract.ProjectEntry.COLUMN_MODULES_USED))
+                    );
+                    list.add(model);
+                }
+            } finally {
+                cursor.close();
+                LogAndToastUtil.Logging("cursor value changed to list- list presenter");
             }
-
-            @Override
-            public void onDataNotAvailable() {
-                view.showToast("Data not available");
-            }
-        });
-        return null;
+            view.createAdapterAndSetData(list);
+        }
+       else {
+            LogAndToastUtil.Logging("no data available");
+        }
     }
 
     @Override
-    public void startDetailedActivity(Project project) {
+    public void startDetailedActivity(ProjectModel project) {
         view.startDetailedActivity(project);
     }
 
     @Override
     public void countProjects() {
-        dataSource.getCountProjects(new IDataSource.CountProjectsCallback() {
-            @Override
-            public void onCountReturned(int countValue) {
-                Log.d("myTag", "count value is "+countValue);
-                if (countValue<=0) {
-                    view.showToast("data not inserted properly");
-                }
-                else {
-                    view.showToast("successful data insertion "+ countValue);
-                }
-            }
-        });
+        manager.getCountProjects();
     }
 }

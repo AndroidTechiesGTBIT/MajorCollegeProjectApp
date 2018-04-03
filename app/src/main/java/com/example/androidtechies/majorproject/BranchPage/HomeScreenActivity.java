@@ -7,8 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.androidtechies.majorproject.Data.DataSource;
-import com.example.androidtechies.majorproject.Data.db.Project;
+import com.example.androidtechies.majorproject.Data.DataManager;
+import com.example.androidtechies.majorproject.Data.ProjectModel;
 import com.example.androidtechies.majorproject.ListProjects.ListProjectActivity;
 import com.example.androidtechies.majorproject.R;
 import com.example.androidtechies.majorproject.Utils.InjectionClass;
@@ -39,7 +39,7 @@ public class HomeScreenActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_home_screen);
 
         ButterKnife.bind(this);
-        DataSource source = InjectionClass.provideDataSource(this);
+        DataManager source = InjectionClass.provideDataSource(this);
         presenter = new HomePresenter(this , source);
 
         //checking first time app starting
@@ -58,13 +58,16 @@ public class HomeScreenActivity extends AppCompatActivity implements View.OnClic
     }
 
 
+    /*
+    Function which takes values from string-arrays & call insert function to insert into database
+     */
     //Todo replace team name with modules
     private void populateDatabase() {
-        List<Project> arrayList = new ArrayList<>();
+        List<ProjectModel> arrayList = new ArrayList<>();
         int lengthIt = getResources().getStringArray(R.array.project_titles_it).length;
-        Project model;
+        ProjectModel model;
         for(int i=0 ; i<lengthIt; i++) {
-            model = new Project(
+            model = new ProjectModel(
                     getResources().getString(R.string.it),
                     getResources().getStringArray(R.array.project_titles_it)[i],
                     getResources().getStringArray(R.array.project_introductions_it)[i],
@@ -76,12 +79,11 @@ public class HomeScreenActivity extends AppCompatActivity implements View.OnClic
         presenter.insertData(arrayList);
     }
 
-//    private void populateDatabase() {
-//        DataSource.populateAsync(AppDatabase.getAppDatabase(this));
-//    }
-
     //Todo add more button  clicks when data is available
 
+    /*
+    Handles button click by checking IDs
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
