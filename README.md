@@ -55,3 +55,6 @@ When a repository is cloned, it has a default remote called `origin` that points
 1. Include spaces between parameters when you call a method for example: `Intent(MainActivity.this, GameActivity.class)`.
 1. Give relevant names to buttons and other resources. 
 1. Use `@id` instead of `@+id` when referring to resources that have been already created in xml files.
+
+## Communication channels
+1. [Slack group](https://join.slack.com/t/android-techies-gtbit/shared_invite/enQtMzQyMzg0NjgwNDk3LTZlNTI5MDZlMzQwNzQyMGI5YmIyYWUxNDZlM2ViNzIxMGE4ZDkyMWI3MTI4OGJmNmZiZGYzMmM3Y2M0MGQxNjk)
